@@ -97,6 +97,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
