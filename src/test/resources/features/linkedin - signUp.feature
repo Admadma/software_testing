@@ -1,9 +1,8 @@
-Feature: Linkedin sing up page
+Feature: Linkedin sign up page - registration
 
   Background:
-    Given the home page is opened
-    And the Cookie disclaimer is closed
-    And the Join now header button is clicked
+    Given the sign up page is opened
+
 
   Scenario: Check required fields
     When the 'Agree & Join' button is clicked
@@ -11,7 +10,7 @@ Feature: Linkedin sing up page
     And under the 'Password' field with the 'password' id, the 'Please enter your password.' error message should be shown
 
 
-  Scenario Outline: Check the field with invalid parameter
+  Scenario Outline: Check the field with invalid parameters
     When the '<field>' field with the '<id>' id is filled in with '<parameter>'
     And the tab button is pressed
     Then '<error message>' error message should be shown under the '<field> field'
