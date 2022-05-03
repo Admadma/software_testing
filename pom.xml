@@ -24,6 +24,7 @@
         <surefire.version>2.22.2</surefire.version>
         <hamcrest.java.version>2.0.0.0</hamcrest.java.version>
         <log4j.version>2.17.1</log4j.version>
+        <checkstyle-maven-plugin.version>3.1.2</checkstyle-maven-plugin.version>
     </properties>
 
     <build>

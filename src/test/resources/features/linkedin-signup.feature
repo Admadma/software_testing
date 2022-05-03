@@ -1,11 +1,11 @@
-Feature: Linkedin sign in page
+Feature: Linkedin sign up page
 
   Background:
     Given the home page is opened
-    And the Sign in header button is clicked
-
+    And the Join now header button is clicked
 
   @requiredfield
-  Scenario: Check sign in required fields
-    When the Sign in button is clicked
-    Then the 'Please enter an email address or phone number' error message should be shown
+  Scenario: Check required fields
+    Given it is scrolled down
+    When the Agree & Join button is clicked
+    Then the 'Please enter your email address.' error message of the 'Email' should be shown
