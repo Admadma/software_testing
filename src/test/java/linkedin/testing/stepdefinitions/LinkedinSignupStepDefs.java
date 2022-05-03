@@ -8,6 +8,7 @@ import io.cucumber.spring.CucumberContextConfiguration;
 import linkedin.testing.config.TestConfig;
 import linkedin.testing.pageobjects.HomePage;
 import linkedin.testing.pageobjects.JoinNowPage;
+import linkedin.testing.pageobjects.SignInPage;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
@@ -31,6 +32,9 @@ public class LinkedinSignupStepDefs {
     @Autowired
     private JoinNowPage joinNowPage;
 
+    @Autowired
+    private SignInPage signInPage;
+
     @Given("the home page is opened")
     public void theHomePageIsOpened(){
         homePage.navigateToHomePage();
@@ -38,7 +42,7 @@ public class LinkedinSignupStepDefs {
 
     @And("the Join now header button is clicked")
     public void theRegistrationHeaderButtonIsClicked() {
-        homePage.clickOnJoinNowButton();
+        homePage.clickOnJoinNowHeaderButton();
     }
 
     @Given("it is scrolled down")
@@ -50,6 +54,16 @@ public class LinkedinSignupStepDefs {
     public void theAgreeAndJoinButtonIsClicked(){
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         joinNowPage.clickOnAgreeAndJoinButton();
+    }
+
+    @And("the Sign in header button is clicked")
+    public void theSignInHeaderButtonIsClicked(){
+        homePage.clickOnSignInHeaderButton();
+    }
+
+    @When("the Sign in button is clicked")
+    public void theSignInButtonIsClicked(){
+        signInPage.clickOnSignInButton();
     }
 
     @And("^the '(.*)' error message of the '(?:.*)' (?:field|dropdown|radio buttons|checkbox) should be shown$")
@@ -64,14 +78,14 @@ public class LinkedinSignupStepDefs {
                         Matchers.is(1));
     }
 
-    @And("^the '(.*)' error message of the 'Email' should be shown$")
+    @And("^the '(.*)' error message should be shown$")
     public void theEmailErrorMessageShouldBeShown(final String message) {
         System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         System.out.println("message: " + message);
         System.out.println(String.format("//div[text()=\"%s\"", message));
         System.out.println(String.format("//p[@class=\"main-content\"])"));
         System.out.println("---------------------------");
-
+/*
         List<WebElement> elements = joinNowPage.getWebDriverFromFactory().findElements(
                 By.cssSelector("p.artdeco-inline-feedback__message"));
 
@@ -81,11 +95,11 @@ public class LinkedinSignupStepDefs {
         System.out.println("--------------------------");
         System.out.println(elements.get(0).getTagName());
         System.out.println(elements.get(1).getTagName());
-
+*/
         Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
                 .atMost(Duration.ofSeconds(PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
                 .until(() -> joinNowPage.getWebDriverFromFactory().findElements(
-                                //By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message)) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
+                                By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message)) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
                                 //By.xpath(String.format("//p[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))  //linkedin a hibeüzenetet egy <p> elemben írja ki, de így sem jó
                                 //By.xpath(String.format("//div[text()=\"%s\" or //p[@class=\"artdeco-inline-feedback__message\"])]", message))  //linkedin a hibeüzenetet egy <p> elemben írja ki, de így sem jó
                                 //By.cssSelector("p.artdeco-inline-feedback__message") //ez megtalál minden ilyen <p> elemet, de nekem csak az kell ami tartalmazza message-t
@@ -97,7 +111,7 @@ public class LinkedinSignupStepDefs {
                                 //By.xpath("//*[text()='Please enter your email address.']")
                                 //By.xpath("//*[text()='Email']")
                                 //By.xpath("//*[text()='Please enter your password.']")
-                                By.xpath(String.format("//*[text()=\"%s\"]", "Please enter your password.")) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
+                                //By.xpath(String.format("//*[text()=\"%s\"]", "Please enter your password.")) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
                                 //By.className("artdeco-inline-feedback__message")
                                 //By.xpath(String.format("//div[text()=\"%s\" or ./label[text()=\"%s\"]]", "Email or phone number", "Email or phone number"))
                                 //By.xpath("//*[text()='Please enter your password.']")
