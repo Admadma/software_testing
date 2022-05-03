@@ -49,6 +49,16 @@ public class LinkedinSignInStepDefs {
         signInPage.clickOnSignInButton();
     }
 
+    @And("^the '(.*)' error message of the '(?:.*)' (?:field|dropdown|radio buttons|checkbox) should be shown$")
+    public void theErrorMessageShouldBeShown(final String message) {
+        Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
+                .atMost(Duration.ofSeconds(PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
+                .until(() -> signInPage.getWebDriverFromFactory().findElements(
+                                By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))
+                        ).size(),
+                        Matchers.is(1));
+    }
+
     @And("^the '(.*)' error message should be shown$")
     public void theEmailErrorMessageShouldBeShown(final String message) {
         Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
