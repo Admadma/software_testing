@@ -34,6 +34,11 @@ public class LinkedinSignInStepDefs {
         homePage.navigateToHomePage();
     }
 
+    @Given("the Sign in page is opened")
+    public void theSignInPageIsOpened(){
+        signInPage.navigateToSignInPage();
+    }
+
     @Given("it is scrolled down")
     public void itIsScrolledDown() {
         signInPage.scrollToTheBottomOfThePage();

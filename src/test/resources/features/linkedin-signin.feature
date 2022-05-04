@@ -1,9 +1,7 @@
 Feature: Linkedin sign in page
 
   Background:
-    Given the home page is opened
-    And the Sign in header button is clicked
-
+    Given the Sign in page is opened
 
   @requiredfield
   Scenario: Check empty Email or Phone field with empty password

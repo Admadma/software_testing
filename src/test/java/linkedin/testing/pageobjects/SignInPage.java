@@ -9,6 +9,8 @@ import java.util.Map;
 
 @Component
 public class SignInPage extends CommonPageObject{
+    private static final String SIGN_IN_PAGE_URL = "https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin";
+
 
     @FindBy(className = "btn__primary--large")
     private WebElement signInButton;
@@ -26,6 +28,10 @@ public class SignInPage extends CommonPageObject{
 
     public SignInPage(WebDriverFactory factory) {
         super(factory);
+    }
+
+    public void navigateToSignInPage(){
+        navigateToUrl(SIGN_IN_PAGE_URL);
     }
 
     public void clickOnSignInButton(){
