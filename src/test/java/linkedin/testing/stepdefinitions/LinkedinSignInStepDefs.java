@@ -89,6 +89,9 @@ public class LinkedinSignInStepDefs {
 
     @When("the {string} is filled in with {string}")
     public void theFieldIsFilledWithParameter(final String field, final String content) {
+        System.out.println("-------------------------------------");
+        System.out.println("content: |" + content + "|" + content.length());
         signInPage.getInputFieldByName(field).sendKeys(content);
     }
+
 }
