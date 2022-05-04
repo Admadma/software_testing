@@ -46,23 +46,6 @@ public class LinkedinSignupStepDefs {
         homepage.navigateToHomePage();
     }
 
-    @And("the Regisztráció header button is clicked")
-    public void theRegistrationHeaderButtonIsClicked(){ homepage.clickOnRegistrationButton();}
-
-    @When("the Regisztráció button is clicked")
-    public void theRegistrationButtonIsClicked() {
-        signUpPage.clickOnRegistrationButton();
-    }
-
-    @And("^the '(.*)' error message of the '(?:.*)' (?:field|dropdown|radio buttons|checkbox) should be shown$")
-    public void theErrorMessageShouldBeShown(final String message) {
-        System.out.println("Message:" +  message);
-        System.out.println(signUpPage.getWebDriverFromFactory().findElement(By.cssSelector("div.inline-alert > p.artdeco-inline-feedback__message")).getText());
-
-        Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
-                .atMost(Duration.ofSeconds(PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
-                .until( () -> signUpPage.getWebDriverFromFactory().findElement(By.cssSelector("div.inline-alert > p.artdeco-inline-feedback__message")).getText() == message);
-    }
 
     @And("the Login header button is clicked")
     public void theLoginHeaderButtonIsClicked() {
@@ -111,7 +94,6 @@ public class LinkedinSignupStepDefs {
     @When("{string} is selected")
     public void languageIsSelected(final String message) {
         profilPage.scrollToTheBottomOfThePage();
-
         WebElement select = profilPage.getWebDriverFromFactory().findElement(By.id("globalfooter-select_language"));
         profilPage.waitForElementToBeClickable(select);
         Select drpLanguage = new Select(select);
