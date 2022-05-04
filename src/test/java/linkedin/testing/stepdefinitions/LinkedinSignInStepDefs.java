@@ -64,38 +64,13 @@ public class LinkedinSignInStepDefs {
         Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
                 .atMost(Duration.ofSeconds(PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
                 .until(() -> signInPage.getWebDriverFromFactory().findElements(
-                                By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message)) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
-                                //By.xpath(String.format("//p[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))  //linkedin a hibeüzenetet egy <p> elemben írja ki, de így sem jó
-                                //By.xpath(String.format("//div[text()=\"%s\" or //p[@class=\"artdeco-inline-feedback__message\"])]", message))  //linkedin a hibeüzenetet egy <p> elemben írja ki, de így sem jó
-                                //By.cssSelector("p.artdeco-inline-feedback__message") //ez megtalál minden ilyen <p> elemet, de nekem csak az kell ami tartalmazza message-t
-                                //By.xpath(String.format("//*[contains(text(), \"%s\")]", message))
-                                //By.xpath("//*[contains(text(), 'Please enter your email address.')]")
-                                //By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))
-                                //By.xpath("//p[text()='Please enter your email address.']")
-                                //By.xpath("//div[text()='Please enter your email address.' or ./p[text()='Please enter your email address.']]")
-                                //By.xpath("//*[text()='Please enter your email address.']")
-                                //By.xpath("//*[text()='Email']")
-                                //By.xpath("//*[text()='Please enter your password.']")
-                                //By.xpath(String.format("//*[text()=\"%s\"]", "Please enter your password.")) //eredeti: keresek egy div elemet aminek vagy a szövege egyenlő message-el vagy tartalmaz egy olyan span elemet aminek a szövege egyenlő message-el
-                                //By.className("artdeco-inline-feedback__message")
-                                //By.xpath(String.format("//div[text()=\"%s\" or ./label[text()=\"%s\"]]", "Email or phone number", "Email or phone number"))
-                                //By.xpath("//*[text()='Please enter your password.']")
-
+                                By.xpath(String.format("//div[text()=\"%s\" or ./span[text()=\"%s\"]]", message, message))
                         ).size(),
                         Matchers.is(1));
-
-        System.out.println("####################################################################");
     }
 
     @When("the {string} is filled in with {string}")
     public void theFieldIsFilledWithParameter(final String field, final String content) {
-        System.out.println("-------------------------------------");
-        System.out.println("content: |" + content + "|" + content.length());
         signInPage.getInputFieldByName(field).sendKeys(content);
     }
-
-    private void randomTestMethod(){
-
-    }
-
 }
