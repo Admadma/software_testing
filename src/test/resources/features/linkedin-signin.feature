@@ -20,12 +20,6 @@ Feature: Linkedin sign in page
       | Email or Phone    | name        | Please enter a valid username                                                         |
       | Email or Phone    | 012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678  | Email or phone number must be between 3 to 128 characters                             |
 
-  Scenario: Check Password field with 6 space character when Email or Phone is valid
-    When the 'Email or Phone' is filled in with '+3630123123'
-    And the 'Password' is filled in with '      '
-    And the Sign in button is clicked
-    Then the 'Please enter a password.' error message of the 'Password' field should be shown
-
   Scenario Outline: Check the Password field when Email or Phone is valid
     When the '<Email or Phone field>' is filled in with '<valid email or phone>'
     And the '<Password field>' is filled in with '<password parameter>'
