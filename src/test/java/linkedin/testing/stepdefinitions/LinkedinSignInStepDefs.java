@@ -73,4 +73,8 @@ public class LinkedinSignInStepDefs {
     public void theFieldIsFilledWithParameter(final String field, final String content) {
         signInPage.getInputFieldByName(field).sendKeys(content);
     }
+
+    private void justARandomChange(){
+
+    }
 }
