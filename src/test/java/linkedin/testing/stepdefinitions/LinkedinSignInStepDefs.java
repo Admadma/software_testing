@@ -74,7 +74,7 @@ public class LinkedinSignInStepDefs {
         signInPage.getInputFieldByName(field).sendKeys(content);
     }
 
-    private void justARandomChange2(){
+    private void justARandomChange3(){
 
     }
 }
