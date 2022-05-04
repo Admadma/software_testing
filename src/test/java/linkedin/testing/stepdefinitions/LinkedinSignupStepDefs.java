@@ -72,8 +72,8 @@ public class LinkedinSignupStepDefs {
     @When("the User give Username and Password")
     public void userGiveUsernameAndPassword() {
         //Itt saját login adatot kell megadni
-        loginPage.setEmailInput("dobos.zoltan.esp@gmail.com");
-        loginPage.setPasswordInput("1stHome0601");
+        loginPage.setEmailInput("zltnd97@gmail.com");
+        loginPage.setPasswordInput("Szoftvertesztelés");
     }
 
     @And("the Login button is clicked")
