@@ -1,11 +1,9 @@
 package linkedin.testing.stepdefinitions;
 
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 import linkedin.testing.config.TestConfig;
 import linkedin.testing.pageobjects.*;
 import org.awaitility.Awaitility;
@@ -16,21 +14,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.security.Signature;
 import java.time.Duration;
 
 import static linkedin.testing.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
-import static org.hamcrest.text.MatchesPattern.matchesPattern;
 
-@CucumberContextConfiguration
 @ContextConfiguration(classes = TestConfig.class)
-public class LinkedinSignupStepDefs {
+public class LinkedinRememberLanguageStepDefs {
 
     @Autowired
-    private Homepage homepage;
-
-    @Autowired
-    private SignUpPage signUpPage;
+    private HomePage homepage;
 
     @Autowired
     private LoginPage loginPage;
@@ -41,7 +33,7 @@ public class LinkedinSignupStepDefs {
     @Autowired
     private ProfilPage profilPage;
 
-    @Given("the home page is opened")
+    @Given("the homepage is opened")
     public void theHomePageIsOpened(){
         homepage.navigateToHomePage();
     }
@@ -49,7 +41,7 @@ public class LinkedinSignupStepDefs {
 
     @And("the Login header button is clicked")
     public void theLoginHeaderButtonIsClicked() {
-        homepage.clickOnLoginButton();
+        homepage.clickOnSignInHeaderButton();
     }
 
     @When("the User give Username and Password")
@@ -69,10 +61,6 @@ public class LinkedinSignupStepDefs {
         feedPage.clickOnProfilButton();
     }
 
-    @Then("the User in Profil page")
-    public void theUserInProfilPage() {
-        Assert.assertEquals(true, feedPage.getWebDriverFromFactory().getCurrentUrl().matches("https://www.linkedin.com/in(.*)"));
-    }
 
     @When("Go to logout page")
     public void goToLogoutPage() {
@@ -94,6 +82,7 @@ public class LinkedinSignupStepDefs {
     @When("{string} is selected")
     public void languageIsSelected(final String message) {
         profilPage.scrollToTheBottomOfThePage();
+
         WebElement select = profilPage.getWebDriverFromFactory().findElement(By.id("globalfooter-select_language"));
         profilPage.waitForElementToBeClickable(select);
         Select drpLanguage = new Select(select);
@@ -103,13 +92,15 @@ public class LinkedinSignupStepDefs {
 
     @Then("{string} , {string} and {string} field should be shown.")
     public void openToAddProfileSectionAndMoreFieldShouldBeShownInLanguage(final String message1, final String message2,final String message3) {
-       Assert.assertEquals(message1 , profilPage.getOpenToButtonText());
-       Assert.assertEquals(message2 , profilPage.getAddProfileButton());
-       Assert.assertEquals(message3 , profilPage.getMoreButton());
+        Assert.assertEquals(message1 , profilPage.getOpenToButtonText());
+        Assert.assertEquals(message2 , profilPage.getAddProfileButton());
+        Assert.assertEquals(message3 , profilPage.getMoreButton());
     }
 
     @And("Page refreshed.")
     public void pageRefreshed() {
         profilPage.getWebDriverFromFactory().navigate().refresh();
     }
+
+
 }

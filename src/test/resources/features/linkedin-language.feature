@@ -1,6 +1,6 @@
 Feature: Language selector
   Background:
-    Given the home page is opened
+    Given the homepage is opened
       And the Login header button is clicked
       And the User give Username and Password
       And the Login button is clicked

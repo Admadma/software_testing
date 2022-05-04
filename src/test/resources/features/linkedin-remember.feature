@@ -1,6 +1,6 @@
 Feature: Linkedin remember function
   Background:
-    Given the home page is opened
+    Given the homepage is opened
     And the Login header button is clicked
 
   Scenario: Login Remember
