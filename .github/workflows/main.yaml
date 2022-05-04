@@ -1,4 +1,4 @@
-name: Main testing pipeline
+name: main testing pipeline
 on: [push]
 jobs:
   Main:
