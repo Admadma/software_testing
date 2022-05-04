@@ -19,7 +19,6 @@ import org.springframework.test.context.ContextConfiguration;
 import java.time.Duration;
 
 import static linkedin.testing.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
-@RunWith(Cucumber.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class LinkedinRememberLanguageStepDefs {
 
