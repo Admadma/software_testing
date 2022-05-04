@@ -4,10 +4,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.junit.Cucumber;
 import linkedin.testing.config.TestConfig;
 import linkedin.testing.pageobjects.*;
 import org.awaitility.Awaitility;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -17,7 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 import java.time.Duration;
 
 import static linkedin.testing.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
-
+@RunWith(Cucumber.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class LinkedinRememberLanguageStepDefs {
 
