@@ -29,7 +29,7 @@ public class WebDriverFactory {
     @Value("${browserName:chrome}")
     private String browserName;
 
-    @Value("${headless:true}")
+    @Value("${headless:false}")
     private Boolean headless;
 
     private WebDriver webDriver;
