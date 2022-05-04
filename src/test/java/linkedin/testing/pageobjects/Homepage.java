@@ -6,17 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Homepage extends CommonPageObject {
+public class HomePage extends CommonPageObject{
+    private static final String HOME_PAGE_URL = "https://www.linkedin.com/";
 
-    private static final String HOME_PAGE_URL = "https://www.linkedin.com/home";
+    @FindBy(className = "nav__button-tertiary")
+    private WebElement registrationHeaderButton;
 
-    @FindBy(css = "a.nav__button-tertiary")
-    private WebElement registrationButton;
+    @FindBy(className = "nav__button-secondary")
+    private WebElement signInHeaderButton;
 
-    @FindBy(css = "a.nav__button-secondary")
-    private WebElement loginButton;
-
-    public Homepage(WebDriverFactory factory) {
+    public HomePage(WebDriverFactory factory) {
         super(factory);
     }
 
@@ -24,15 +23,15 @@ public class Homepage extends CommonPageObject {
         navigateToUrl(HOME_PAGE_URL);
     }
 
-    public void clickOnRegistrationButton(){
-        waitForElementToBeClickable(registrationButton);
-        registrationButton.click();
+    public void clickOnJoinNowHeaderButton(){
+        waitForElementToBeClickable(registrationHeaderButton);
+        registrationHeaderButton.click();
         waitForPageReadiness();
     }
 
-    public void clickOnLoginButton(){
-        waitForElementToBeClickable(loginButton);
-        loginButton.click();
+    public void clickOnSignInHeaderButton(){
+        waitForElementToBeClickable(signInHeaderButton);
+        signInHeaderButton.click();
         waitForPageReadiness();
     }
 }
