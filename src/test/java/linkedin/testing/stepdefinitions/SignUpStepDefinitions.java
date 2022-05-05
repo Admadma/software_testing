@@ -47,8 +47,6 @@ public class SignUpStepDefinitions {
     @When("the {} field with the {} id or with the {} id is filled in with {}")
     public void theFieldFieldWithTheIdIdIsFilledInWithParameter(final String fieldName, final String inputId, final String secondaryId, final String inputData) {
         var driver = factory.getWebDriver();
-        //WebDriverWait wait = new WebDriverWait(driver, 15);
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//*[@id=%s]", inputId))));
         final var inputField =  findInputField(driver, inputId, secondaryId);
         inputField.sendKeys(inputData);
     }

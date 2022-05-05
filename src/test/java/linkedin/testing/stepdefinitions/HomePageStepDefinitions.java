@@ -25,7 +25,9 @@ public class HomePageStepDefinitions {
 
     @And("the Cookie disclaimer is closed")
     public void theCookieDisclaimerIsClosed() {
-        //System.out.println(driver.findElement(By.xpath("//button[text()='']")));
+        var driver = factory.getWebDriver();
+        var acceptButton = driver.findElement(By.cssSelector("#artdeco-global-alert-container > div > section > div > div.artdeco-global-alert-action__wrapper > button:nth-child(2)"));
+        acceptButton.click();
     }
 
     @Then("the page url is \"([^\"]*)\"$")
