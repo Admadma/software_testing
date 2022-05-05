@@ -26,6 +26,15 @@ public class SignUpStepDefinitions extends TestRunner {
         driver.get("https://www.linkedin.com/signup");
     }
 
+    @When("the {} button is clicked")
+    public void the_button_is_clicked(final String agreeAndJoinButton) {
+        var driver = factory.getWebDriver();
+        var signUpButton = driver.findElement(By.cssSelector("#join-form-submit"));
+        signUpButton.click();
+
+    }
+
+
     @Then("under the email field, a validation error message is appeared with {} message or with {} message")
     public void underTheEmailFieldAValidationErrorMessageIsAppearedWithPleaseEnterYourEmailAddress(final String firstErrorMessage, final String secondaryErrorMessage) {
         validateEmailFieldErrorMessage(firstErrorMessage, secondaryErrorMessage);
@@ -83,11 +92,7 @@ public class SignUpStepDefinitions extends TestRunner {
         assertThat(errorMessageAppeared, equalTo(true));
     }
     private boolean errorMessageAppeared(final String actualErrorMessage, final String firstExpectedErrorMessage, final String secondExpectedErrorMessage){
-        var errorMessageAppeared = false;
-        if(actualErrorMessage.equals(firstExpectedErrorMessage) || actualErrorMessage.equals((secondExpectedErrorMessage))){
-            errorMessageAppeared = true;
-        }
-        return errorMessageAppeared;
+        return actualErrorMessage.equals(firstExpectedErrorMessage) || actualErrorMessage.equals(secondExpectedErrorMessage);
     }
     private void validatePasswordErrorMessage(final String expectedErrorMessage) {
         final var actualErrorMessage = findErrorMessageForPasswordValidationFailure();

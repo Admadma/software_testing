@@ -6,12 +6,12 @@ Feature: Linkedin sign up page - registration
 
   Scenario Outline: Check required fields
     When the 'Agree & Join' button is clicked
-    Then under the email field, a validation error message is appeared with '<error message>' message or with '<secondary error message>' message
+    Then under the email field, a validation error message is appeared with <error message> message or with <secondary error message> message
     Then under the password field, a validation error message is appeared with Please enter your password.
 
     Examples:
       | error message                      | secondary error message        |
-      | Please enter your email address    | Please enter your mobile number |
+      | Please enter your email address. | Please enter your email address or mobile number. |
 
 
 
