@@ -5,8 +5,6 @@ Feature: Linkedin home page header display test
     Then the following elements are in the header
       |element type     | selector       | referenced page |
       |Linkedin logo    | nav > a > icon | https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo |
-      |Linkedin logo    | nav > a > icon | https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo |
-      |Linkedin logo    | nav > a > icon | https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo |
 #      |Discover icon    |          |                 |
 #      |People icon      |          |                 |
 #      |Learning icon    |          |                 |

@@ -1,7 +1,6 @@
 package linkedin.testing.stepdefinitions;
 
 import linkedin.testing.factory.WebDriverFactory;
-import linkedin.testing.unideb.TestRunner;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,7 +14,7 @@ import static linkedin.testing.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECON
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SignUpStepDefinitions extends TestRunner {
+public class SignUpStepDefinitions {
 
     @Autowired
     private WebDriverFactory factory;
@@ -26,8 +25,8 @@ public class SignUpStepDefinitions extends TestRunner {
         driver.get("https://www.linkedin.com/signup");
     }
 
-    @When("the {} button is clicked")
-    public void the_button_is_clicked(final String agreeAndJoinButton) {
+    @When("the 'Agree & Join' button is clicked")
+    public void the_button_is_clicked() {
         var driver = factory.getWebDriver();
         var signUpButton = driver.findElement(By.cssSelector("#join-form-submit"));
         signUpButton.click();

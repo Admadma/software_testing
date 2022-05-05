@@ -16,7 +16,7 @@ Feature: Linkedin sign up page - registration
 
 
   Scenario Outline: Check the field with invalid parameters
-    When the '<field>' field with the '<id>' id or with the '<secondaryId>' id is filled in with '<parameter>'
+    When the '<field>' field with the '<id>' id or with the '<secondaryId>' id is filled in with <parameter>
     And the tab button is pressed in the previous field with '<id>' id or with '<secondaryId>' id
     Then under the '<field>' field, the <validation error message> is appeared or <secondary error message> is appeared
 
