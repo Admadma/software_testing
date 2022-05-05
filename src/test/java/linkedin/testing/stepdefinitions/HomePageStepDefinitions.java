@@ -47,12 +47,9 @@ public class HomePageStepDefinitions {
             final var selectedElement = driver.findElement(By.cssSelector(selector));
             assertThat(selectedElement, notNullValue());
 
-            final var actualReferencedPageUrl = getParent(selectedElement).getAttribute("href");
+            final var actualReferencedPageUrl = selectedElement.getAttribute("href");
             assertThat(actualReferencedPageUrl, equalTo(expectedReferencedPage));
         });
     }
 
-    private WebElement getParent(final WebElement element) {
-        return element.findElement(By.xpath("./.."));
-    }
 }
